@@ -38,6 +38,10 @@ To build the application from source:
 2. Run `dotnet build -c Release`
 3. The executable will be created in the `bin\Release\net9.0-windows` folder
 
+## Downloading the Executable
+
+You can download the latest compiled version of the application from the [Releases](https://github.com/mackka2k/Text-File-Splitter/releases) page.
+
 ## Testing
 
 To test the application:
