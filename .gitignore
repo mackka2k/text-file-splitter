@@ -37,3 +37,7 @@ hosts_chunks/
 
 # Generated files
 test_input.txt
+
+# Executable files
+*.exe
+*.dll
