@@ -1,58 +1,33 @@
 # Text File Splitter
 
-A Windows Forms application for splitting large text files into smaller chunks, specifically designed for Cold Turkey Blocker import compatibility.
+Splits files. Filters comments (`#`) and empty lines automatically because nobody wants junk in their chunks.
 
-Built with .NET 9.0 Windows Forms.
+## How to use (for people who read docs)
 
-## Features
+### Use the EXE (Recommended)
+1. Go to `dist/`.
+2. Run `TextFileSplitter.exe`. No, you don't need to install anything.
 
-- Split large text files into smaller chunks of a specified size
-- Automatically filters out empty lines and comments (lines starting with #)
-- Creates output files in a `hosts_chunks` subdirectory
-- Progress bar and status updates during processing
-- Administrator privileges enforcement via manifest
+### Build it yourself (if you must)
+1. Install dependencies: `pip install customtkinter Pillow pyinstaller`
+2. Run `build.bat`.
+3. Wait for PyInstaller to do its thing.
 
-## Requirements
+### Clean up the mess
+- Run `clean.bat`. It nukes `build/`, `dist/`, and other junk.
 
-- Windows OS
-- .NET 9.0 Runtime or higher
+### Run from source (dev mode)
+- `python main.py`
 
-## Usage
+## Logic
+- **Input**: UTF-8 text.
+- **Output**: UTF-8 chunks in `hosts_chunks/`.
+- **Filtering**: Lines starting with `#` are ignored. Whitespace is stripped.
 
-1. Run the application using the `run.bat` file (administrator privileges will be requested automatically)
-2. Click "Browse..." to select the input text file to split
-3. Enter the desired chunk size (default is 4900 lines for Cold Turkey Blocker compatibility)
-4. Optionally specify an output directory (if not specified, chunks will be created in the same directory as the input file)
-5. Click "Split File" to begin processing
+## Stats
+- GUI: `customtkinter` (retro style, obviously).
+- Logic: `python` (simplicity over C# bloat).
+- Window: 650x520 (Fixed size. Don't try to stretch it).
 
-The application will create a `hosts_chunks` folder in the output directory and split the input file into multiple parts with names like:
-- `hosts_part_01_of_16.txt`
-- `hosts_part_02_of_16.txt`
-- etc.
-
-## Building from Source
-
-To build the application from source:
-
-1. Open a command prompt in the project directory
-2. Run `dotnet build -c Release`
-3. The executable will be created in the `bin\Release\net9.0-windows` folder
-
-## Downloading the Executable
-
-You can download the latest compiled version of the application from the [Releases](https://github.com/mackka2k/Text-File-Splitter/releases) page.
-
-## Testing
-
-To test the application:
-
-1. Run `test_app.ps1` to create a test input file and launch the application
-2. In the application:
-   - Select `test_input.txt` as the input file
-   - Set chunk size to 3
-   - Click "Split File"
-3. Check the `hosts_chunks` directory for the output files
-
-## License
-
-This project is provided for educational and research purposes only. Please ensure you comply with all applicable laws and the terms of service of any software you are researching.
+---
+*Legacy code removed. Move fast, break things, then fix them in Python.*
